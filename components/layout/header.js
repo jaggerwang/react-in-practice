@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Layout, Tooltip, Icon } from 'antd'
 
 import JWPLogo from './logo'
+import JWPHeaderAccount from './account'
 
 class JWPHeader extends React.Component {
   render() {
@@ -18,6 +19,8 @@ class JWPHeader extends React.Component {
               </a>
             </Tooltip>
           </Link>
+
+          <JWPHeaderAccount />
         </div>
 
         <style jsx>{`

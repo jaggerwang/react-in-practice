@@ -13,14 +13,22 @@
   "dependencies": {
     "@zeit/next-less": "^1.0.1",
     "antd": "^3.16.6",
+    "express": "^4.16.4",
+    "isomorphic-unfetch": "^3.0.0",
     "less": "^3.9.0",
     "next": "^8.1.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
+    "querystring": "^0.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^0.19.1"
   }
 }
