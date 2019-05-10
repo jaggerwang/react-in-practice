@@ -17,13 +17,24 @@ export default function JWPLogo() {
           }
 
           h1 {
-            display: inline-block;
             vertical-align: middle;
             line-height: 64px;
             margin: 0;
             color: #d4380d;
             font-size: 1.5rem;
             font-weight: 600;
+          }
+
+          @media screen and (max-width: 480px) {
+            h1 {
+              display: none;
+            }
+          }
+
+          @media screen and (min-width: 480px) {
+            h1 {
+              display: inline-block;
+            }
           }
         `}</style>
       </a>

@@ -29,6 +29,18 @@ app.prepare()
     server.all('*', (req, res) => {
       const parsedUrl = parse(req.url, true)
 
+      const { pathname } = parsedUrl
+      let m = pathname.match(/^\/tasks\/(\d+)$/)
+      if (m) {
+        parsedUrl.pathname = '/task/detail'
+        parsedUrl.query.id = m[1]
+      }
+      m = pathname.match(/^\/users\/(\d+)$/)
+      if (m) {
+        parsedUrl.pathname = '/user/detail'
+        parsedUrl.query.id = m[1]
+      }
+
       handle(req, res, parsedUrl)
     })
 
