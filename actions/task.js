@@ -59,3 +59,21 @@ export const getHotTasksAction = ({ jwpApi, limit, offset } = {}) =>
       limit, offset
     })
   }
+
+export const getPublishedTasksAction = ({ jwpApi, userId, limit, offset
+} = {}) =>
+  dispatch => {
+    jwpApi = jwpApi || new JWPApi()
+    return jwpApi.get('/task/published', {
+      userId, limit, offset
+    })
+  }
+
+export const getTaskCommentsOfPublishedTasksAction = ({ jwpApi, userId, limit,
+  offset } = {}) =>
+  dispatch => {
+    jwpApi = jwpApi || new JWPApi()
+    return jwpApi.get('/task/comments/of/published/tasks', {
+      userId, limit, offset
+    })
+  }
