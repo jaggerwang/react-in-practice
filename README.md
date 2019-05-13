@@ -2,7 +2,7 @@
 
 This open source project is the lite version of [JWPay(及未支付)](https://jwpay.app) web app. JWPay is a react web app, it use [Next.js](https://nextjs.org/) as it's app framework, and [AntD](https://ant.design/) as it's ui components library.
 
-本项目为 [叽歪课堂 - Next.js + AntD React 应用开发实战](https://blog.jaggerwang.net/jwcourse-nextjs-antd-react-app-development/) 实战项目参考代码，可从对应分支获取各章节的分步骤实现代码。
+本项目为课程 [叽歪课堂 - Next.js + AntD React 应用开发实战](https://blog.jaggerwang.net/jwcourse-nextjs-antd-react-app-development/) 实战项目参考代码，可从对应分支获取各章节的分步骤实现代码。
 
 ## Feature Video
 
