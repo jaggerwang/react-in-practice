@@ -4,6 +4,10 @@ This open source project is the lite version of [JWPay(及未支付)](https://jw
 
 本项目为 [叽歪课堂 - Next.js + AntD React 应用开发实战](https://blog.jaggerwang.net/jwcourse-nextjs-antd-react-app-development/) 实战项目参考代码，可从对应分支获取各章节的分步骤实现代码。
 
+## Feature Video
+
+[![叽歪课堂 - Next.js + AntD React 应用开发实战 - 功能演示](https://i.ytimg.com/vi/lVtHc-lhhfU/maxresdefault.jpg)](https://youtu.be/lVtHc-lhhfU)
+
 ## How to run
 
 ### Clone repository
