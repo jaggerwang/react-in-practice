@@ -3,7 +3,7 @@ import React from 'react'
 export default function JWPFooter() {
   return (
     <div className="root">
-      <a href="mailto:contact@mg.jwpay.app" target="_blank">联系我们</a>
+      <a href={`mailto:${process.env.contactEmail}`} target="_blank">联系我们</a>
 
       <span>Copyright © 2018-2019 及未支付</span>
 

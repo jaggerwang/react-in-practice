@@ -1,4 +1,5 @@
 const initialState = {
+  version: process.env.version,
 }
 
 export default (state = initialState, action = {}) => {

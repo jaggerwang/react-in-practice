@@ -46,7 +46,7 @@ class IndexPage extends React.Component {
     return (
       <div>
         <Head>
-          <title key="title">及未支付 - 以任务的形式来完成支付</title>
+          <title key="title">{process.env.title} - {process.env.slogan}</title>
         </Head>
 
         <JWPLayoutSimple {...{ pathname }}>

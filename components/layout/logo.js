@@ -20,7 +20,7 @@ export default function JWPLogo() {
             vertical-align: middle;
             line-height: 64px;
             margin: 0;
-            color: #d4380d;
+            color: ${process.env.theme.primaryColor};
             font-size: 1.5rem;
             font-weight: 600;
           }

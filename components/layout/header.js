@@ -80,7 +80,7 @@ class JWPHeader extends React.Component {
           }
 
           .selected {
-            color: #d4380d;
+            color: ${process.env.theme.primaryColor};
           }
 
           @media screen and (max-width: 480px) {
