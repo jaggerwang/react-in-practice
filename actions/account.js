@@ -1,4 +1,4 @@
-import { JWPApi } from '../lib/api'
+import { JWPApi } from '../lib'
 import { resetAction } from './common'
 
 export const SET_ACCOUNT_INFO_ACTION = 'SET_ACCOUNT_INFO_ACTION'
@@ -60,7 +60,7 @@ export const editAccountAction = ({ username, password, avatarFileId,
       username, password, avatarFileId, coverFileId, intro
     })
       .then(async resp => {
-        await dispatch(getAccountInfoAction({}))
+        await dispatch(getAccountInfoAction())
         return resp
       })
   }

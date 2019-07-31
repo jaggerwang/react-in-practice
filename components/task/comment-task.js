@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Modal, Form, Rate, Input } from 'antd'
 
-import { showMessage } from '../../lib/feedback'
+import { showMessage } from '../../lib'
 import { handleActionError, commentTaskAction } from '../../actions'
 
 class _CommentForm extends React.Component {

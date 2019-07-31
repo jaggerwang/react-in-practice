@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Card, Form, PageHeader } from 'antd'
 import moment from 'moment'
 
-import { JWPApi } from '../../lib/api'
+import { JWPApi } from '../../lib'
 import {
   handleActionError, getTaskInfoAction, saveFormAction, resetFormAction
 } from '../../actions'

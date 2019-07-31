@@ -8,7 +8,7 @@ import moment from 'moment'
 import {
   handleActionError, resetFormAction, publishTaskAction, editTaskAction
 } from '../../actions'
-import { showMessage } from '../../lib/feedback'
+import { showMessage } from '../../lib'
 import UploadFile from '../storage/upload-file'
 
 export class TaskForm extends React.Component {

@@ -4,7 +4,7 @@ import Router from 'next/router'
 import { connect } from 'react-redux'
 import { Card, List, Row, Col, Avatar, Typography } from 'antd'
 
-import { JWPApi } from '../../lib/api'
+import { JWPApi } from '../../lib'
 import {
   handleActionError, getUserInfo, getPublishedTasksAction,
   getTaskCommentsOfPublishedTasksAction

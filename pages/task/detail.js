@@ -6,8 +6,7 @@ import { connect } from 'react-redux'
 import { Card, Row, Col, Skeleton, Button, Tooltip, Typography, List } from 'antd'
 import moment from 'moment'
 
-import { JWPApi } from '../../lib/api'
-import { loginUrl } from '../../lib/util'
+import { JWPApi, loginUrl } from '../../lib'
 import { handleActionError, getTaskInfoAction, getTaskCommentsAction } from '../../actions'
 import { JWPError, JWPLayoutSimple, PayTask, CommentTask, TaskCommentItem } from '../../components'
 

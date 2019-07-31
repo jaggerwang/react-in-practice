@@ -1,6 +1,8 @@
 import React from 'react'
 import { Upload, Button } from 'antd'
 
+import { JWPApiCode } from '../../lib'
+
 class UploadFile extends React.Component {
   state = {
     loading: false,
@@ -40,7 +42,7 @@ class UploadFile extends React.Component {
     } else if (file.status === 'done') {
       this.setState({ loading: false })
       const { code, data } = file.response
-      if (code === 0) {
+      if (code === JWPApiCode.OK) {
         onChange && onChange(data.file)
       }
     }

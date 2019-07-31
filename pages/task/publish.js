@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Card, PageHeader, Form } from 'antd'
 import moment from 'moment'
 
-import { loginUrl } from '../../lib/util'
+import { loginUrl } from '../../lib'
 import { saveFormAction } from '../../actions'
 import { JWPError, JWPLayoutSimple, TaskForm } from '../../components'
 

@@ -1,8 +1,6 @@
 import Router from 'next/router'
 
-import { showMessage } from '../lib/feedback'
-import { JWPApiResponse } from '../lib/api'
-import { loginUrl } from '../lib/util'
+import { showMessage, JWPApiResponse, loginUrl } from '../lib'
 
 export const RESET_ACTION = 'RESET_ACTION'
 

@@ -1,4 +1,4 @@
-import { JWPApi } from '../lib/api'
+import { JWPApi } from '../lib'
 
 export const publishTaskAction = ({ title, desc, coverFileId, payAmount,
   startAt, stopAt, text, link, credentials } = {}) =>

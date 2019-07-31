@@ -6,7 +6,7 @@ import withRedux from 'next-redux-wrapper'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 
-import { pageview } from '../lib/gtag'
+import { pageview } from '../lib'
 import { makeStore } from '../store'
 
 import '../assets/main.less'

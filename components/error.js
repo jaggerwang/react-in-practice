@@ -2,7 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 import { Button, Typography, Row, Col } from 'antd'
 
-import { loginUrl } from '../lib/util'
+import { loginUrl } from '../lib'
 import JWPLoading from './loading'
 
 class JWPError extends React.Component {

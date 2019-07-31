@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Router from 'next/router'
 import { Card, List } from 'antd'
 
-import { JWPApi } from '../lib/api'
+import { JWPApi } from '../lib'
 import { handleActionError, getHotTasksAction } from '../actions'
 import { JWPError, JWPLayoutSimple, TaskCard } from '../components'
 
