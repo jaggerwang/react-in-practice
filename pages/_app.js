@@ -3,6 +3,8 @@ import App from 'next/app'
 import getConfig from 'next/config'
 import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
+import { ConfigProvider } from 'antd'
+import zhCN from 'antd/lib/locale-provider/zh_CN'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 
@@ -32,9 +34,11 @@ class JWPApp extends App {
     const { store, Component, pageProps } = this.props
 
     return (
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <ConfigProvider locale={zhCN}>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </ConfigProvider>
     )
   }
 }
