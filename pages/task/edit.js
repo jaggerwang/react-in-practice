@@ -9,7 +9,7 @@ import { JWPApi } from '../../lib'
 import {
   handleActionError, getTaskInfoAction, saveFormAction, resetFormAction
 } from '../../actions'
-import { JWPError, JWPLayoutSimple, TaskForm } from '../../components'
+import { JWPError, JWPLayoutDefault, TaskForm } from '../../components'
 
 const EditTaskForm = connect(({ form }) => {
   return {
@@ -103,7 +103,7 @@ class EditTaskPage extends React.Component {
           <title key="title">编辑任务 - 及未支付</title>
         </Head>
 
-        <JWPLayoutSimple {...{ pathname }}>
+        <JWPLayoutDefault {...{ pathname }}>
           <PageHeader title="编辑任务" onBack={() => Router.back()} />
 
           <div style={{ padding: 24 }}>
@@ -111,7 +111,7 @@ class EditTaskPage extends React.Component {
               <EditTaskForm task={task} />
             </Card>
           </div>
-        </JWPLayoutSimple>
+        </JWPLayoutDefault>
       </div>
     )
   }

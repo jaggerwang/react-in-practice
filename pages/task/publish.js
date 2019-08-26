@@ -7,7 +7,7 @@ import moment from 'moment'
 
 import { loginUrl } from '../../lib'
 import { saveFormAction } from '../../actions'
-import { JWPError, JWPLayoutSimple, TaskForm } from '../../components'
+import { JWPError, JWPLayoutDefault, TaskForm } from '../../components'
 
 const PublishTaskForm = connect(({ form }) => {
   return {
@@ -65,7 +65,7 @@ class PublishTaskPage extends React.Component {
           <title key="title">发布任务 - 及未支付</title>
         </Head>
 
-        <JWPLayoutSimple {...{ pathname }}>
+        <JWPLayoutDefault {...{ pathname }}>
           <PageHeader title="发布任务" onBack={() => Router.back()} />
 
           <div style={{ padding: 24 }}>
@@ -73,7 +73,7 @@ class PublishTaskPage extends React.Component {
               <PublishTaskForm />
             </Card>
           </div>
-        </JWPLayoutSimple>
+        </JWPLayoutDefault>
       </div>
     )
   }

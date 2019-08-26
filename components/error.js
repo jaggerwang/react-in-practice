@@ -1,76 +1,60 @@
 import React from 'react'
+import Head from 'next/head'
 import Router from 'next/router'
-import { Button, Typography, Row, Col } from 'antd'
+import { Button, Result } from 'antd'
 
-import { loginUrl } from '../lib'
+import { needLogin } from '../lib'
 import JWPLoading from './loading'
+import { JWPLayoutDefault } from '../components'
 
 class JWPError extends React.Component {
   componentDidMount() {
-    let { type } = this.props
+    const { status } = this.props
 
-    if (type === 401) {
-      Router.replace(loginUrl())
+    if (status === 401) {
+      needLogin()
     }
   }
 
   render() {
-    let { type, desc } = this.props
+    const { status, title } = this.props
 
-    if (type === 401) {
+    if (status === 401) {
       return (
         <JWPLoading notice="正在跳转登录页" />
       )
     }
 
-    if (![403, 404, 500].includes(type)) {
-      type = 500
-    }
     return (
       <div>
-        <Row type="flex" justify="center" align="middle" style={{ height: '100vh' }}>
-          <Col span={12} className="left">
-            <img
-              src={`/static/img/${type}.svg`}
-              style={{ maxWidth: '100%', maxHeight: '100%' }}
-            />
-          </Col>
-          <Col span={12} className="right">
-            <div className="right-content">
-              <Typography.Title level={1} style={{ marginBottom: 24, fontSize: 72 }}>
-                {type}
-              </Typography.Title>
+        <Head>
+          <title key="title">错误页 - {process.env.title}</title>
+        </Head>
 
-              <Typography.Paragraph type="secondary" style={{ fontSize: 20 }}>
-                {desc}
-              </Typography.Paragraph>
-
-              <div>
-                <Button type="primary" onClick={() => Router.back()}>返回前页</Button>
-                <Button onClick={() => Router.replace('/')} style={{ marginLeft: 12 }}>返回首页</Button>
-              </div>
-            </div>
-          </Col>
-        </Row>
-
-        <style jsx>{`
-          div :global(.left) {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-
-          div :global(.right) {
-            display: flex;
-            align-items: center;
-          }
-
-          .right-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-        `}</style>
+        <JWPLayoutDefault>
+          <Result
+            status={`${status}`}
+            title={title || `${status}`}
+            extra={[
+              <Button
+                key="back"
+                type="primary"
+                onClick={() => {
+                  if (Router.query.from) {
+                    Router.push(Router.query.from)
+                  } else {
+                    Router.back()
+                  }
+                }}
+              >
+                返回前页
+              </Button>,
+              <Button key="index" onClick={() => Router.push('/')}>
+                返回首页
+              </Button>
+            ]}
+          />
+        </JWPLayoutDefault>
       </div>
     )
   }

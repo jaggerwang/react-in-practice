@@ -8,7 +8,7 @@ import moment from 'moment'
 
 import { JWPApi, loginUrl } from '../../lib'
 import { handleActionError, getTaskInfoAction, getTaskCommentsAction } from '../../actions'
-import { JWPError, JWPLayoutSimple, PayTask, CommentTask, TaskCommentItem } from '../../components'
+import { JWPError, JWPLayoutDefault, PayTask, CommentTask, TaskCommentItem } from '../../components'
 
 const commentPageSize = 5
 
@@ -124,7 +124,7 @@ class TaskDetailPage extends React.Component {
           <title key="title">{task.title} - 及未支付</title>
         </Head>
 
-        <JWPLayoutSimple {...{ pathname }}>
+        <JWPLayoutDefault {...{ pathname }}>
           <div className={`root ${task.coverFileId !== 0 ? 'bg' : ''}`}>
             <Typography.Title
               level={2}
@@ -291,7 +291,7 @@ class TaskDetailPage extends React.Component {
               commentTotal: commentTotal + 1,
             })}
           />
-        </JWPLayoutSimple>
+        </JWPLayoutDefault>
       </div >
     )
   }

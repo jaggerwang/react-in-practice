@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Form, Icon, Input, Button, Card } from 'antd'
 
 import { loginAction } from '../actions'
-import { JWPLayoutSimple } from '../components'
+import { JWPLayoutDefault } from '../components'
 
 class _LoginForm extends React.Component {
   state = {
@@ -123,7 +123,7 @@ class LoginPage extends React.Component {
           <title key="title">登录 - 及未支付</title>
         </Head>
 
-        <JWPLayoutSimple {...{ pathname }}>
+        <JWPLayoutDefault {...{ pathname }}>
           <div className="root">
             <Card
               title="登录"
@@ -140,7 +140,7 @@ class LoginPage extends React.Component {
               }
             `}</style>
           </div>
-        </JWPLayoutSimple>
+        </JWPLayoutDefault>
       </div>
     )
   }

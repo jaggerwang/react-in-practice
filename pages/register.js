@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Form, Input, Button, Divider, Card } from 'antd'
 
 import { registerAction } from '../actions'
-import { JWPLayoutSimple } from '../components'
+import { JWPLayoutDefault } from '../components'
 
 class _RegisterForm extends React.Component {
   state = {
@@ -100,7 +100,7 @@ class RegisterPage extends React.Component {
           <title key="title">注册 - 及未支付</title>
         </Head>
 
-        <JWPLayoutSimple {...{ pathname }}>
+        <JWPLayoutDefault {...{ pathname }}>
           <div className="root">
             <Card
               title="注册"
@@ -117,7 +117,7 @@ class RegisterPage extends React.Component {
               }
             `}</style>
           </div>
-        </JWPLayoutSimple>
+        </JWPLayoutDefault>
       </div>
     )
   }

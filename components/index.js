@@ -1,4 +1,4 @@
-export { default as JWPLayoutSimple } from './layout/simple'
+export { default as JWPLayoutDefault } from './layout/default'
 
 export { default as UploadFile } from './storage/upload-file'
 

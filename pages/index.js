@@ -5,7 +5,7 @@ import { Card, List } from 'antd'
 
 import { JWPApi } from '../lib'
 import { handleActionError, getHotTasksAction } from '../actions'
-import { JWPError, JWPLayoutSimple, TaskCard } from '../components'
+import { JWPError, JWPLayoutDefault, TaskCard } from '../components'
 
 const pageSize = 8
 
@@ -49,7 +49,7 @@ class IndexPage extends React.Component {
           <title key="title">{process.env.title} - {process.env.slogan}</title>
         </Head>
 
-        <JWPLayoutSimple {...{ pathname }}>
+        <JWPLayoutDefault {...{ pathname }}>
           <div style={{ padding: 24 }}>
             <Card bordered={false} title="热门任务">
               <List
@@ -71,7 +71,7 @@ class IndexPage extends React.Component {
               />
             </Card>
           </div>
-        </JWPLayoutSimple>
+        </JWPLayoutDefault>
       </div>
     )
   }

@@ -9,9 +9,7 @@ import {
   handleActionError, getUserInfo, getPublishedTasksAction,
   getTaskCommentsOfPublishedTasksAction
 } from '../../actions'
-import {
-  JWPError, JWPLayoutSimple, TaskCard, TaskCommentItem
-} from '../../components'
+import { JWPError, JWPLayoutDefault, TaskCard, TaskCommentItem } from '../../components'
 
 const pageSize = 6
 const commentPageSize = 5
@@ -96,7 +94,7 @@ class UserDetailPage extends React.Component {
           <title key="title">{`${user.username} ${user.intro}`} - 及未支付</title>
         </Head>
 
-        <JWPLayoutSimple {...{ pathname }}>
+        <JWPLayoutDefault {...{ pathname }}>
           <div className={`root ${user.coverFileId !== 0 ? 'bg' : ''}`}>
             <Avatar icon="user" src={user.avatarFile.thumbUrls.small} size={100} />
 
@@ -185,7 +183,7 @@ class UserDetailPage extends React.Component {
               </Col>
             </Row>
           </div>
-        </JWPLayoutSimple>
+        </JWPLayoutDefault>
       </div>
     )
   }

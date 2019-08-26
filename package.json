@@ -12,23 +12,25 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-less": "^1.0.1",
-    "antd": "^3.16.6",
-    "express": "^4.16.4",
+    "antd": "^3.21.2",
+    "express": "^4.17.1",
     "isomorphic-unfetch": "^3.0.0",
     "less": "^3.9.0",
     "moment": "^2.24.0",
-    "next": "^8.1.0",
-    "next-redux-wrapper": "^3.0.0-alpha.2",
+    "next": "^9.0.3",
+    "next-redux-wrapper": "^3.0.0-alpha.3",
+    "numeral": "^2.0.6",
     "querystring": "^0.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-redux": "^7.0.3",
-    "redux": "^4.0.1",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "websocket": "^1.0.29"
   },
   "devDependencies": {
     "http-proxy-middleware": "^0.19.1"

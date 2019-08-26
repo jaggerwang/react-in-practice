@@ -30,13 +30,12 @@ export function handleActionError({ isInitial = false, error, res }) {
   }
 
   if (isInitial) {
-    const actionError = { type: 500, desc: error.message || String(error) }
+    const actionError = { type: 500, desc: `${error}` }
     if (res) {
-      res.statusCode = 500
       res.actionError = actionError
     }
     return { actionError }
   } else {
-    showMessage(error.message || String(error))
+    showMessage(`${error}`)
   }
 }

@@ -7,7 +7,7 @@ import {
 } from 'antd'
 
 import { editAccountAction, getAccountInfoAction } from '../../actions'
-import { JWPLayoutSimple, UploadFile } from '../../components'
+import { JWPLayoutDefault, UploadFile } from '../../components'
 
 class _ProfileItem extends React.Component {
   state = {
@@ -181,7 +181,7 @@ class ProfilePage extends React.Component {
           <title key="title">个人资料 - 及未支付</title>
         </Head>
 
-        <JWPLayoutSimple {...{ pathname }}>
+        <JWPLayoutDefault {...{ pathname }}>
           <PageHeader title="个人资料" onBack={() => Router.back()} />
 
           <div style={{ padding: 24 }}>
@@ -279,7 +279,7 @@ class ProfilePage extends React.Component {
               </Row>
             </Card>
           </div>
-        </JWPLayoutSimple>
+        </JWPLayoutDefault>
       </div>
     )
   }
