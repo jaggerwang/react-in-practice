@@ -8,8 +8,9 @@ import zhCN from 'antd/lib/locale-provider/zh_CN'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 
-import { pageview } from '../lib'
 import { makeStore } from '../store'
+import { pageview, JWPApiResponse } from '../lib'
+import ErrorPage from './error'
 
 import '../assets/main.less'
 
@@ -23,20 +24,39 @@ if (publicRuntimeConfig.enableGoogleAnalytics === 'true') {
 
 class JWPApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    const { store } = ctx
+    const { req, res, pathname, query, store } = ctx
 
-    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
+    let pageError, pageProps
+    try {
+      pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+    } catch (error) {
+      if (error instanceof JWPApiResponse) {
+        pageError = { status: error.status, title: error.message }
+      } else {
+        throw error
+      }
+    }
 
-    return { store, pageProps }
+    return { pathname, query, store, pageError, pageProps }
+  }
+
+  componentDidMount() {
+    const { pageError } = this.props
+    if (pageError) {
+      return
+    }
   }
 
   render() {
-    const { store, Component, pageProps } = this.props
+    const { Component, pathname, query, store, pageError, pageProps } = this.props
 
     return (
       <ConfigProvider locale={zhCN}>
         <Provider store={store}>
-          <Component {...pageProps} />
+          {pageError ?
+            <ErrorPage {...{ pathname, query, store }} {...pageError} /> :
+            <Component {...{ pathname, query, store }} {...pageProps} />
+          }
         </Provider>
       </ConfigProvider>
     )

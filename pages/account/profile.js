@@ -141,10 +141,6 @@ const ProfileItem = connect(({ account }) => {
 })(_ProfileItem)
 
 class ProfilePage extends React.Component {
-  static async getInitialProps({ store, req, res, pathname, query }) {
-    return { pathname, query }
-  }
-
   onAvatarChange = (file) => {
     const { dispatch } = this.props
 
@@ -164,7 +160,7 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { pathname, user } = this.props
+    const { user } = this.props
 
     const labelLayout = {
       xs: 24,
@@ -181,7 +177,7 @@ class ProfilePage extends React.Component {
           <title key="title">个人资料 - 及未支付</title>
         </Head>
 
-        <JWPLayoutDefault {...{ pathname }}>
+        <JWPLayoutDefault {...this.props}>
           <PageHeader title="个人资料" onBack={() => Router.back()} />
 
           <div style={{ padding: 24 }}>
@@ -198,8 +194,7 @@ class ProfilePage extends React.Component {
                     text="设置头像"
                     accept="image/*"
                     sizeLimit={4 * 1024 * 1024}
-                    bucket="jwpay"
-                    path="/user"
+                    showUploadList={false}
                     onChange={this.onAvatarChange}
                   />
                 </div>
@@ -209,8 +204,7 @@ class ProfilePage extends React.Component {
                     text="设置背景"
                     accept="image/*"
                     sizeLimit={4 * 1024 * 1024}
-                    bucket="jwpay"
-                    path="/user"
+                    showUploadList={false}
                     onChange={this.onCoverChange}
                   />
                 </div>

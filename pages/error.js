@@ -4,10 +4,10 @@ import Router from 'next/router'
 import { Button, Result } from 'antd'
 
 import { needLogin } from '../lib'
-import JWPLoading from './loading'
-import { JWPLayoutDefault } from '../components'
+import { JWPLoading, JWPLayoutDefault } from '../components'
 
-class JWPError extends React.Component {
+// 错误页
+class ErrorPage extends React.Component {
   componentDidMount() {
     const { status } = this.props
 
@@ -17,12 +17,21 @@ class JWPError extends React.Component {
   }
 
   render() {
-    const { status, title } = this.props
+    let { status, title } = this.props
 
     if (status === 401) {
       return (
         <JWPLoading notice="正在跳转登录页" />
       )
+    }
+
+    status = `${status}`
+    if (!['403', '404', '500', 'error', 'info', 'success', 'warning']
+      .includes(status)) {
+      status = '500'
+    }
+    if (!title) {
+      title = status
     }
 
     return (
@@ -31,10 +40,11 @@ class JWPError extends React.Component {
           <title key="title">错误页 - {process.env.title}</title>
         </Head>
 
-        <JWPLayoutDefault>
+        <JWPLayoutDefault {...this.props}>
           <Result
-            status={`${status}`}
-            title={title || `${status}`}
+            status=""
+            status={status}
+            title={title}
             extra={[
               <Button
                 key="back"
@@ -51,7 +61,7 @@ class JWPError extends React.Component {
               </Button>,
               <Button key="index" onClick={() => Router.push('/')}>
                 返回首页
-              </Button>
+            </Button>
             ]}
           />
         </JWPLayoutDefault>
@@ -60,4 +70,4 @@ class JWPError extends React.Component {
   }
 }
 
-export default JWPError
+export default ErrorPage

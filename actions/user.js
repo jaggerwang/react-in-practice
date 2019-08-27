@@ -1,9 +1,9 @@
-import { JWPApi } from '../lib'
+import { JWPApiService } from '../lib'
 
-export const getUserInfo = ({ jwpApi, id } = {}) =>
+export const getUserInfo = ({ jwpApiService, id } = {}) =>
   dispatch => {
-    jwpApi = jwpApi || new JWPApi()
-    return jwpApi.get('/user/info', {
+    jwpApiService = jwpApiService || new JWPApiService()
+    return jwpApiService.get('/user/info', {
       id
     })
   }

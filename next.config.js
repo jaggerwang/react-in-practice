@@ -24,7 +24,7 @@ module.exports = withLess({
     baseUrl: process.env.JWP_BASE_URL || (isProd ? `https://${domain}` : `http://${domain}`),
     logApiRequest: process.env.JWP_LOG_API_REQUEST !== undefined ? (process.env.JWP_LOG_API_REQUEST === 'true') : !isProd,
     logReduxAction: process.env.JWP_LOG_REDUX_ACTION !== undefined ? (process.env.JWP_LOG_REDUX_ACTION === 'true') : !isProd,
-    mockApi: process.env.JWP_MOCK_API !== undefined ? (process.env.JWP_MOCK_API === 'true') : !isProd,
+    mockJwpayApi: process.env.JWP_MOCK_JWPAY_API !== undefined ? (process.env.JWP_MOCK_JWPAY_API === 'true') : !isProd,
   },
   serverRuntimeConfig: {
   },

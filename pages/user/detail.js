@@ -4,12 +4,12 @@ import Router from 'next/router'
 import { connect } from 'react-redux'
 import { Card, List, Row, Col, Avatar, Typography } from 'antd'
 
-import { JWPApi } from '../../lib'
+import { JWPApiService } from '../../lib'
 import {
   handleActionError, getUserInfo, getPublishedTasksAction,
   getTaskCommentsOfPublishedTasksAction
 } from '../../actions'
-import { JWPError, JWPLayoutDefault, TaskCard, TaskCommentItem } from '../../components'
+import { JWPLayoutDefault, TaskCard, TaskCommentItem } from '../../components'
 
 const pageSize = 6
 const commentPageSize = 5
@@ -20,33 +20,27 @@ class UserDetailPage extends React.Component {
     taskCommentTotal: 0,
   }
 
-  static async getInitialProps({ store, req, res, pathname, query }) {
-    try {
-      let jwpApi
-      if (req) {
-        jwpApi = new JWPApi({ headers: { cookie: req.headers.cookie } })
-      }
-      let resp = await store.dispatch(getUserInfo({
-        jwpApi, id: query.id
-      }))
-      const { user } = resp.data
-
-      resp = await store.dispatch(getPublishedTasksAction({
-        jwpApi, userId: query.id, limit: pageSize, ...query
-      }))
-      const { tasks, total } = resp.data
-
-      resp = await store.dispatch(getTaskCommentsOfPublishedTasksAction({
-        jwpApi, userId: query.id, limit: commentPageSize
-      }))
-      const { comments: taskComments, total: taskCommentTotal } = resp.data
-
-      return {
-        pathname, query, user, tasks, total, taskComments, taskCommentTotal
-      }
-    } catch (error) {
-      return handleActionError({ isInitial: true, error, res })
+  static async getInitialProps({ req, query, store }) {
+    let jwpApiService
+    if (req) {
+      jwpApiService = new JWPApiService({ headers: { cookie: req.headers.cookie } })
     }
+    let resp = await store.dispatch(getUserInfo({
+      jwpApiService, id: query.id
+    }))
+    const { user } = resp.data
+
+    resp = await store.dispatch(getPublishedTasksAction({
+      jwpApiService, userId: query.id, limit: pageSize, ...query
+    }))
+    const { tasks, total } = resp.data
+
+    resp = await store.dispatch(getTaskCommentsOfPublishedTasksAction({
+      jwpApiService, userId: query.id, limit: commentPageSize
+    }))
+    const { comments: taskComments, total: taskCommentTotal } = resp.data
+
+    return { user, tasks, total, taskComments, taskCommentTotal }
   }
 
   constructor(props) {
@@ -75,16 +69,12 @@ class UserDetailPage extends React.Component {
         const { completedTasks: taskComments, total: taskCommentTotal } = resp.data
         this.setState({ taskComments, taskCommentTotal })
       })
-      .catch(error => handleActionError({ error }))
+      .catch(handleActionError)
   }
 
   render() {
-    const { actionError, pathname, query, user, tasks, total } = this.props
+    const { query, user, tasks, total } = this.props
     let { taskComments, taskCommentTotal } = this.state
-
-    if (actionError) {
-      return <JWPError {...actionError} />
-    }
 
     tasks.forEach(v => v.user = user)
 
@@ -94,7 +84,7 @@ class UserDetailPage extends React.Component {
           <title key="title">{`${user.username} ${user.intro}`} - 及未支付</title>
         </Head>
 
-        <JWPLayoutDefault {...{ pathname }}>
+        <JWPLayoutDefault {...this.props}>
           <div className={`root ${user.coverFileId !== 0 ? 'bg' : ''}`}>
             <Avatar icon="user" src={user.avatarFile.thumbUrls.small} size={100} />
 

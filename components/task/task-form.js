@@ -11,7 +11,7 @@ import {
 import { showMessage } from '../../lib'
 import UploadFile from '../storage/upload-file'
 
-export class TaskForm extends React.Component {
+class _TaskForm extends React.Component {
   state = {
     isSubmitting: false,
   }
@@ -48,7 +48,7 @@ export class TaskForm extends React.Component {
           })
           .catch(error => {
             this.setState({ isSubmitting: false })
-            handleActionError({ error })
+            handleActionError(error)
           })
       } else {
         this.setState({ isSubmitting: true })
@@ -66,7 +66,7 @@ export class TaskForm extends React.Component {
           })
           .catch(error => {
             this.setState({ isSubmitting: false })
-            handleActionError({ error })
+            handleActionError(error)
           })
       }
     })
@@ -161,8 +161,7 @@ export class TaskForm extends React.Component {
                   text="选取封面"
                   accept="image/*"
                   sizeLimit={4 * 1024 * 1024}
-                  bucket="jwpay"
-                  path="/task"
+                  showUploadList={false}
                 />
               )}
             </div>
@@ -287,4 +286,4 @@ export class TaskForm extends React.Component {
   }
 }
 
-export default TaskForm
+export default _TaskForm

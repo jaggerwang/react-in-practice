@@ -37,7 +37,7 @@ class PayTask extends React.Component {
       })
       .catch(error => {
         this.setState({ isSubmitting: false })
-        handleActionError({ error })
+        handleActionError(error)
       })
   }
 

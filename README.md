@@ -1,25 +1,30 @@
-# JWPay Web Demo
+# React in Practice
 
-This open source project is the lite version of [JWPay(及未支付)](https://jwpay.app) web app. JWPay is a react web app, it use [Next.js](https://nextjs.org/) as it's app framework, and [AntD](https://ant.design/) as it's ui components library.
+This project is the reference source code of online video course [叽歪课堂 - NextJS + AntD React 应用开发实战](https://blog.jaggerwang.net/jwcourse-nextjs-antd-react-app-develop-in-practice/), which is developed using Next.js react application framework and AntD react component library.
 
-本项目为课程 [叽歪课堂 - Next.js + AntD React 应用开发实战](https://blog.jaggerwang.net/jwcourse-nextjs-antd-react-app-development/) 实战项目参考代码，可从对应分支获取各章节的分步骤实现代码。
+> To students of course: 可从分支里获取各章节的分步骤实现代码。
 
-## Feature Video
+## Frameworks and libraries used by this project
 
-[![叽歪课堂 - Next.js + AntD React 应用开发实战 - 功能演示](https://i.ytimg.com/vi/lVtHc-lhhfU/maxresdefault.jpg)](https://youtu.be/lVtHc-lhhfU)
+1. [React](https://reactjs.org/)
+1. [Next.js](https://nextjs.org/)
+1. [AntD](https://ant.design/)
+1. [Redux](https://redux.js.org/)
+1. [Styled-JSX](https://github.com/zeit/styled-jsx)
+1. [Caddy](https://caddyserver.com/)
+1. [Let’s Encrypt](https://letsencrypt.org/)
 
 ## How to run
 
 ### Clone repository
 
 ```bash
-git clone git@github.com:jaggerwang/jwpay-web-demo.git
+git clone git@github.com:jaggerwang/sanic-in-practice.git && cd sanic-in-practice
 ```
 
 ### Install npm packages
 
 ```bash
-cd jwpay-web-demo
 npm install
 ```
 

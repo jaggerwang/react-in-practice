@@ -5,11 +5,9 @@ import { connect } from 'react-redux'
 import { Card, Form, PageHeader } from 'antd'
 import moment from 'moment'
 
-import { JWPApi } from '../../lib'
-import {
-  handleActionError, getTaskInfoAction, saveFormAction, resetFormAction
-} from '../../actions'
-import { JWPError, JWPLayoutDefault, TaskForm } from '../../components'
+import { JWPApiService } from '../../lib'
+import { getTaskInfoAction, saveFormAction, resetFormAction } from '../../actions'
+import { JWPLayoutDefault, TaskForm } from '../../components'
 
 const EditTaskForm = connect(({ form }) => {
   return {
@@ -43,21 +41,17 @@ const EditTaskForm = connect(({ form }) => {
 })(TaskForm))
 
 class EditTaskPage extends React.Component {
-  static async getInitialProps({ store, req, res, pathname, query }) {
-    try {
-      let jwpApi
-      if (req) {
-        jwpApi = new JWPApi({ headers: { cookie: req.headers.cookie } })
-      }
-      const resp = await store.dispatch(getTaskInfoAction({
-        jwpApi, id: query.id
-      }))
-      const { task } = resp.data
-
-      return { pathname, query, task }
-    } catch (error) {
-      return handleActionError({ isInitial: true, error, res })
+  static async getInitialProps({ req, query, store }) {
+    let jwpApiService
+    if (req) {
+      jwpApiService = new JWPApiService({ headers: { cookie: req.headers.cookie } })
     }
+    const resp = await store.dispatch(getTaskInfoAction({
+      jwpApiService, id: query.id
+    }))
+    const { task } = resp.data
+
+    return { task }
   }
 
   executeWhenRehydrated() {
@@ -81,21 +75,11 @@ class EditTaskPage extends React.Component {
   }
 
   componentDidMount() {
-    const { actionError } = this.props
-
-    if (actionError) {
-      return
-    }
-
     this.executeWhenRehydrated()
   }
 
   render() {
-    const { actionError, pathname, task } = this.props
-
-    if (actionError) {
-      return <JWPError {...actionError} />
-    }
+    const { task } = this.props
 
     return (
       <div>
@@ -103,7 +87,7 @@ class EditTaskPage extends React.Component {
           <title key="title">编辑任务 - 及未支付</title>
         </Head>
 
-        <JWPLayoutDefault {...{ pathname }}>
+        <JWPLayoutDefault {...this.props}>
           <PageHeader title="编辑任务" onBack={() => Router.back()} />
 
           <div style={{ padding: 24 }}>

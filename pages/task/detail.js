@@ -6,9 +6,9 @@ import { connect } from 'react-redux'
 import { Card, Row, Col, Skeleton, Button, Tooltip, Typography, List } from 'antd'
 import moment from 'moment'
 
-import { JWPApi, loginUrl } from '../../lib'
+import { JWPApiService, loginUrl } from '../../lib'
 import { handleActionError, getTaskInfoAction, getTaskCommentsAction } from '../../actions'
-import { JWPError, JWPLayoutDefault, PayTask, CommentTask, TaskCommentItem } from '../../components'
+import { JWPLayoutDefault, PayTask, CommentTask, TaskCommentItem } from '../../components'
 
 const commentPageSize = 5
 
@@ -23,27 +23,23 @@ class TaskDetailPage extends React.Component {
     commentTotal: 0,
   }
 
-  static async getInitialProps({ store, req, res, pathname, query }) {
-    try {
-      let jwpApi
-      if (req) {
-        jwpApi = new JWPApi({ headers: { cookie: req.headers.cookie } })
-      }
-
-      let resp = await store.dispatch(getTaskInfoAction({
-        jwpApi, id: query.id
-      }))
-      let { task } = resp.data
-
-      resp = await store.dispatch(getTaskCommentsAction({
-        jwpApi, taskId: query.id, limit: commentPageSize
-      }))
-      const { comments, total: commentTotal } = resp.data
-
-      return { pathname, query, task, comments, commentTotal }
-    } catch (error) {
-      return handleActionError({ isInitial: true, error, res })
+  static async getInitialProps({ req, query, store }) {
+    let jwpApiService
+    if (req) {
+      jwpApiService = new JWPApiService({ headers: { cookie: req.headers.cookie } })
     }
+
+    let resp = await store.dispatch(getTaskInfoAction({
+      jwpApiService, id: query.id
+    }))
+    let { task } = resp.data
+
+    resp = await store.dispatch(getTaskCommentsAction({
+      jwpApiService, taskId: query.id, limit: commentPageSize
+    }))
+    const { comments, total: commentTotal } = resp.data
+
+    return { task, comments, commentTotal }
   }
 
   constructor(props) {
@@ -63,16 +59,12 @@ class TaskDetailPage extends React.Component {
         const { comments: comments, total: commentTotal } = resp.data
         this.setState({ comments, commentTotal })
       })
-      .catch(error => handleActionError({ error }))
+      .catch(handleActionError)
   }
 
   render() {
-    let { actionError, pathname, user } = this.props
+    let { user } = this.props
     let { task, comments, commentTotal } = this.state
-
-    if (actionError) {
-      return <JWPError {...actionError} />
-    }
 
     const ops = []
     if (task.status === 'pending') {
@@ -124,7 +116,7 @@ class TaskDetailPage extends React.Component {
           <title key="title">{task.title} - 及未支付</title>
         </Head>
 
-        <JWPLayoutDefault {...{ pathname }}>
+        <JWPLayoutDefault {...this.props}>
           <div className={`root ${task.coverFileId !== 0 ? 'bg' : ''}`}>
             <Typography.Title
               level={2}

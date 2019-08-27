@@ -8,5 +8,4 @@ export { default as PayTask } from './task/pay-task'
 export { default as TaskCard } from './task/task-card'
 export { default as TaskForm } from './task/task-form'
 
-export { default as JWPError } from './error'
 export { default as JWPLoading } from './loading'

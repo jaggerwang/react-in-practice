@@ -14,9 +14,7 @@ class JWPHeader extends React.Component {
         <div className="left unfold" >
           <JWPLogo />
 
-          <Link href="https://jwpay.app">
-            <a className="header-button" target="_blank">完整应用</a>
-          </Link>
+          <a className="header-button" href="https://jwpay.app" target="_blank">完整应用</a>
         </div>
 
         <div className="left fold" >
@@ -29,9 +27,7 @@ class JWPHeader extends React.Component {
                   </Link>
                 </Menu.Item>
                 <Menu.Item>
-                  <Link href="https://jwpay.app">
-                    <a target="_blank">完整应用</a>
-                  </Link>
+                  <a href="https://jwpay.app" target="_blank">完整应用</a>
                 </Menu.Item>
                 <Menu.Item>
                   <Link href="/task/publish" passHref>

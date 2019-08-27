@@ -3,28 +3,24 @@ import Head from 'next/head'
 import Router from 'next/router'
 import { Card, List } from 'antd'
 
-import { JWPApi } from '../lib'
-import { handleActionError, getHotTasksAction } from '../actions'
-import { JWPError, JWPLayoutDefault, TaskCard } from '../components'
+import { JWPApiService } from '../lib'
+import { getHotTasksAction } from '../actions'
+import { JWPLayoutDefault, TaskCard } from '../components'
 
 const pageSize = 8
 
 class IndexPage extends React.Component {
-  static async getInitialProps({ store, req, res, pathname, query }) {
-    try {
-      let jwpApi
-      if (req) {
-        jwpApi = new JWPApi({ headers: { cookie: req.headers.cookie } })
-      }
-      const resp = await store.dispatch(getHotTasksAction({
-        jwpApi, limit: pageSize
-      }))
-      const { tasks, total } = resp.data
-
-      return { pathname, query, tasks, total }
-    } catch (error) {
-      return handleActionError({ isInitial: true, error, res })
+  static async getInitialProps({ req, query, store }) {
+    let jwpApiService
+    if (req) {
+      jwpApiService = new JWPApiService({ headers: { cookie: req.headers.cookie } })
     }
+    const resp = await store.dispatch(getHotTasksAction({
+      jwpApiService, limit: pageSize
+    }))
+    const { tasks, total } = resp.data
+
+    return { tasks, total }
   }
 
   onPageChange = (page, pageSize) => {
@@ -37,11 +33,7 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    const { actionError, pathname, query, tasks, total } = this.props
-
-    if (actionError) {
-      return <JWPError {...actionError} />
-    }
+    const { query, tasks, total } = this.props
 
     return (
       <div>
@@ -49,7 +41,7 @@ class IndexPage extends React.Component {
           <title key="title">{process.env.title} - {process.env.slogan}</title>
         </Head>
 
-        <JWPLayoutDefault {...{ pathname }}>
+        <JWPLayoutDefault {...this.props}>
           <div style={{ padding: 24 }}>
             <Card bordered={false} title="热门任务">
               <List

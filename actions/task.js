@@ -1,10 +1,10 @@
-import { JWPApi } from '../lib'
+import { JWPApiService } from '../lib'
 
 export const publishTaskAction = ({ title, desc, coverFileId, payAmount,
   startAt, stopAt, text, link, credentials } = {}) =>
   dispatch => {
-    const jwpApi = new JWPApi()
-    return jwpApi.post('/task/publish', {
+    const jwpApiService = new JWPApiService()
+    return jwpApiService.post('/task/publish', {
       title, desc, coverFileId, payAmount, startAt, stopAt, text, link,
       credentials
     })
@@ -13,67 +13,67 @@ export const publishTaskAction = ({ title, desc, coverFileId, payAmount,
 export const editTaskAction = ({ id, title, desc, coverFileId, payAmount,
   startAt, stopAt, text, link, credentials, status } = {}) =>
   dispatch => {
-    const jwpApi = new JWPApi()
-    return jwpApi.post('/task/edit', {
+    const jwpApiService = new JWPApiService()
+    return jwpApiService.post('/task/edit', {
       id, title, desc, coverFileId, payAmount, startAt, stopAt, text, link,
       credentials, status
     })
   }
 
-export const getTaskInfoAction = ({ jwpApi, id } = {}) =>
+export const getTaskInfoAction = ({ jwpApiService, id } = {}) =>
   dispatch => {
-    jwpApi = jwpApi || new JWPApi()
-    return jwpApi.get('/task/info', {
+    jwpApiService = jwpApiService || new JWPApiService()
+    return jwpApiService.get('/task/info', {
       id
     })
   }
 
 export const payTaskAction = ({ id, payPlatform, payAmount } = {}) =>
   dispatch => {
-    const jwpApi = new JWPApi()
-    return jwpApi.post('/task/pay', {
+    const jwpApiService = new JWPApiService()
+    return jwpApiService.post('/task/pay', {
       id, payPlatform, payAmount
     })
   }
 
 export const commentTaskAction = ({ taskId, score, text } = {}) =>
   dispatch => {
-    const jwpApi = new JWPApi()
-    return jwpApi.post('/task/comment', {
+    const jwpApiService = new JWPApiService()
+    return jwpApiService.post('/task/comment', {
       taskId, score, text
     })
   }
 
-export const getTaskCommentsAction = ({ jwpApi, taskId, limit, offset } = {}) =>
+export const getTaskCommentsAction = ({ jwpApiService, taskId, limit, offset } = {}) =>
   dispatch => {
-    jwpApi = jwpApi || new JWPApi()
-    return jwpApi.get('/task/comments/of/tasks', {
+    jwpApiService = jwpApiService || new JWPApiService()
+    return jwpApiService.get('/task/comments/of/tasks', {
       taskId, limit, offset
     })
   }
 
-export const getHotTasksAction = ({ jwpApi, limit, offset } = {}) =>
+export const getHotTasksAction = ({ jwpApiService, limit, offset } = {}) =>
   dispatch => {
-    jwpApi = jwpApi || new JWPApi()
-    return jwpApi.get('/task/hot', {
+    jwpApiService = jwpApiService || new JWPApiService()
+    return jwpApiService.get('/task/hot', {
       limit, offset
     })
   }
 
-export const getPublishedTasksAction = ({ jwpApi, userId, limit, offset
+export const getPublishedTasksAction = ({ jwpApiService, userId, limit, offset
 } = {}) =>
   dispatch => {
-    jwpApi = jwpApi || new JWPApi()
-    return jwpApi.get('/task/published', {
+    jwpApiService = jwpApiService || new JWPApiService()
+    return jwpApiService.get('/task/published', {
       userId, limit, offset
     })
   }
 
-export const getTaskCommentsOfPublishedTasksAction = ({ jwpApi, userId, limit,
+export const getTaskCommentsOfPublishedTasksAction = ({ jwpApiService, userId, limit,
   offset } = {}) =>
   dispatch => {
-    jwpApi = jwpApi || new JWPApi()
-    return jwpApi.get('/task/comments/of/published/tasks', {
+    jwpApiService = jwpApiService || new JWPApiService()
+    return jwpApiService.get('/task/comments/of/published/tasks', {
       userId, limit, offset
     })
   }

@@ -110,20 +110,14 @@ const LoginForm = connect()(Form.create({
 })(_LoginForm))
 
 class LoginPage extends React.Component {
-  static async getInitialProps({ pathname, query }) {
-    return { pathname, query }
-  }
-
   render() {
-    const { pathname } = this.props
-
     return (
       <div>
         <Head>
           <title key="title">登录 - 及未支付</title>
         </Head>
 
-        <JWPLayoutDefault {...{ pathname }}>
+        <JWPLayoutDefault {...this.props}>
           <div className="root">
             <Card
               title="登录"

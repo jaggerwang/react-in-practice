@@ -7,7 +7,7 @@ import moment from 'moment'
 
 import { loginUrl } from '../../lib'
 import { saveFormAction } from '../../actions'
-import { JWPError, JWPLayoutDefault, TaskForm } from '../../components'
+import { JWPLayoutDefault, TaskForm } from '../../components'
 
 const PublishTaskForm = connect(({ form }) => {
   return {
@@ -41,10 +41,6 @@ const PublishTaskForm = connect(({ form }) => {
 })(TaskForm))
 
 class PublishTaskPage extends React.Component {
-  static async getInitialProps({ pathname, query }) {
-    return { pathname, query }
-  }
-
   componentDidMount() {
     const { user } = this.props
     if (user.id === 0) {
@@ -53,19 +49,13 @@ class PublishTaskPage extends React.Component {
   }
 
   render() {
-    const { actionError, pathname } = this.props
-
-    if (actionError) {
-      return <JWPError {...actionError} />
-    }
-
     return (
       <div>
         <Head>
           <title key="title">发布任务 - 及未支付</title>
         </Head>
 
-        <JWPLayoutDefault {...{ pathname }}>
+        <JWPLayoutDefault {...this.props}>
           <PageHeader title="发布任务" onBack={() => Router.back()} />
 
           <div style={{ padding: 24 }}>

@@ -32,7 +32,7 @@ class _CommentForm extends React.Component {
         })
         .catch(error => {
           updateState({ isSubmitting: false })
-          handleActionError({ error })
+          handleActionError(error)
         })
     })
   }

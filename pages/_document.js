@@ -8,9 +8,6 @@ class JWPDocument extends Document {
     return (
       <html>
         <Head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-
           <link rel="icon" type="image/png" sizes="200x200" href={`/static/img/${process.env.name}-200.png`} />
           <link rel="icon" type="image/png" sizes="32x32" href={`/static/img/${process.env.name}-32.png`} />
           <link rel="icon" type="image/png" sizes="16x16" href={`/static/img/${process.env.name}-16.png`} />
