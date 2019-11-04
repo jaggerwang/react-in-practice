@@ -4,7 +4,7 @@ This project is the reference source code of online video course [叽歪课堂 -
 
 > To students of course: 可从分支里获取各章节的分步骤实现代码。
 
-## Frameworks and libraries used by this project
+## Dependent frameworks and packages
 
 1. [React](https://reactjs.org/)
 1. [Next.js](https://nextjs.org/)
