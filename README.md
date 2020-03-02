@@ -1,8 +1,6 @@
 # React in Practice
 
-This project is the reference source code of online video course [叽歪课堂 - NextJS + AntD React 应用开发实战](https://blog.jaggerwang.net/jwcourse-nextjs-antd-react-app-develop-in-practice/), which is developed using Next.js react application framework and AntD react component library.
-
-> To students of course: 可从分支里获取各章节的分步骤实现代码。
+This project can be used as a starter for learning react web app development, the app is developed using Next.js react application framework and AntD react component library. There is also an article [NextJS + AntD React 应用开发指南](https://blog.jaggerwang.net/nextjs-antd-react-app-develop-tour/) for learning this project.
 
 ## Dependent frameworks and packages
 
