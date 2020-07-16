@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "MOCK_JWPAY_API=true node server.js",
+    "dev": "cross-env MOCK_JWPAY_API=true node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production MOCK_JWPAY_API=true node server.js"
+    "start": "cross-env NODE_ENV=production MOCK_JWPAY_API=true node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -33,6 +33,7 @@
     "websocket": "^1.0.29"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "http-proxy-middleware": "^0.19.1"
   }
 }
