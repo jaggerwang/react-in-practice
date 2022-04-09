@@ -16,7 +16,7 @@
     "express": "^4.17.1",
     "isomorphic-unfetch": "^3.0.0",
     "less": "^3.9.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "next": "^9.0.3",
     "next-redux-wrapper": "^3.0.0-alpha.3",
     "numeral": "^2.0.6",
